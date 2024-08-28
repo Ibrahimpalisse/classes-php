@@ -108,13 +108,17 @@ class User {
         }
     }
     public function getpourModifier($id){
-        $insere = $this->connexion_bdd->prepare("SELECT * login, password, email, firstname, lastname FROM utilisateurs WHERE id = ?");
+        $insere = $this->connexion_bdd->prepare("SELECT * FROM utilisateurs WHERE id = ?");
         $insere->bind_param('i', $id);
         $insere->execute();
         $result = $insere->get_result();
 
         if($result->num_rows > 0){
             $userinfo = $result->fetch_assoc();
+            $insere->close();
+            return $userinfo;
+            
+          
         }else{
             $userinfo = null;
         }

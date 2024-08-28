@@ -1,5 +1,5 @@
 <?php
-require 'User.php';
+require 'User-pdo.php';
 $user = new User();
 
 if(isset($_POST['id'])) {
