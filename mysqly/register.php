@@ -14,11 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['valider'])) {
     $resulta = $user->register($login, $password, $email, $firstname, $lastname);
 
     if ($resulta === true) {
-        // Redirection vers la page d'accueil en cas de succès
-        header('Location: ../index.php');
+        
+        header('Location: ./index.php');
         exit();
     } else {
-        // Afficher le message d'erreur
+
         $errorMessage = htmlspecialchars($resulta);
     }
 }
@@ -32,42 +32,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['valider'])) {
     <title>Inscription</title>
 </head>
 <body>
-    <div class="container mt-4">
     <?php if ($errorMessage): ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Erreur :</strong> <?php echo $errorMessage; ?>  
             </div>
-         <?php endif; ?>      
+         <?php endif; ?> 
+    </br>   
+      </br>
+         <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Inscription</h5>
+                            </div>
+                                <div class="card-body">             
+                                <form method="POST">
+                                    <div class="mb-3">
+                                        <label for="login" class="form-label">Login</label>
+                                        <input type="text" class="form-control" id="login" name="login" required>
+                                    </div>
 
-        <form method="POST">
-            <div class="mb-3">
-                <label for="login" class="form-label">Login</label>
-                <input type="text" class="form-control" id="login" name="login" required>
-            </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Mot de passe</label>
+                                        <input type="password" class="form-control" id="password" name="password" required>
+                                    </div>
 
-            <div class="mb-3">
-                <label for="password" class="form-label">Mot de passe</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
 
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
+                                    <div class="mb-3">
+                                        <label for="firstname" class="form-label">Prénom</label>
+                                        <input type="text" class="form-control" id="firstname" name="firstname" required>
+                                    </div>
 
-            <div class="mb-3">
-                <label for="firstname" class="form-label">Prénom</label>
-                <input type="text" class="form-control" id="firstname" name="firstname" required>
-            </div>
+                                    <div class="mb-3">
+                                        <label for="lastname" class="form-label">Nom</label>
+                                        <input type="text" class="form-control" id="lastname" name="lastname" required>
+                                    </div>
 
-            <div class="mb-3">
-                <label for="lastname" class="form-label">Nom</label>
-                <input type="text" class="form-control" id="lastname" name="lastname" required>
-            </div>
-
-            <button type="submit" class="btn btn-primary" name="valider">S'inscrire</button>
-        </form>
-    </div>
+                                    <button type="submit" class="btn btn-primary" name="valider">S'inscrire</button>
+                                    <a href="./login.php" class="btn btn-secondary">Se connecter</a>
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-4yBoA/3AA8eAA/0fOe63Xuo94ktY97B+S7R52vv03Wv59D8SoqMZ4Fdc4G4Z10wr" crossorigin="anonymous"></script>
+    
 </body>
 </html>
