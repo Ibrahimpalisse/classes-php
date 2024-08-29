@@ -77,7 +77,6 @@ class User {
 
     public function disconnect() {
         session_destroy();
-        // Unset all of the session variables
         $_SESSION = array();
     }
 
@@ -140,7 +139,6 @@ class User {
         $this->id = $id;
     }
 
-    // Méthode pour obtenir l'ID
     public function getId() {
         return $this->id;
     }
@@ -186,7 +184,7 @@ class User {
     }
 
     public function __destruct() {
-        // PDO does not have a close method; the connection is automatically closed when the object is destroyed
+        $this->connexion_bdd = null; 
     }
 }
 ?>
